@@ -4,7 +4,7 @@ const AccountDetails = ({ accountAddress, accountBalance }) => {
   return (
     <div>
       <div className="jumbotron">
-        <h1 className="display-5">bnetly.com</h1>
+        <h1 className="display-5">What is bnet?</h1>
         <div class="card col-md-12" >
           <div class="card-body">
             <p className="lead">
