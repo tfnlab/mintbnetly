@@ -56,7 +56,7 @@ const ConnectToMetamask = ({ connectToMetamask }) => {
           bnetly.com
         </h1>
         <hr className="my-4" />
-        <img src="https://meta.bnetly.com/image/bnetly.png" width="100%"/>
+        <img src="https://meta.bnetly.com/images/bnetly.png" width="100%"/>
         <hr className="my-4" />
         <button
           onClick={connectToMetamask}
