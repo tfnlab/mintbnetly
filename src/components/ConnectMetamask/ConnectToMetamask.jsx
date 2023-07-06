@@ -47,6 +47,26 @@ function mouseLeave(control) {
   console.log("mouseLeave: ", control);
 }
 
+const [value, setValue] = useState('');
+const url = 'https://bnetly.com'; // replace with your target URL
+
+const handleClick = () => {
+  if (value !== '') {
+    const data = { key: value }; // the entered value is used as 'key' in the payload
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    };
+
+    fetch(url, requestOptions)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+  } else {
+    console.error('Please enter a value');
+  }
+};
 
 const ConnectToMetamask = ({ connectToMetamask }) => {
   return (
@@ -55,6 +75,13 @@ const ConnectToMetamask = ({ connectToMetamask }) => {
         <h1 className="display-5">
           bnetly.com
         </h1>
+
+        <hr className="my-4" />
+
+              <h1>Boost Content</h1>
+              <input type="text" value={value} onChange={e => setValue(e.target.value)} placeholder="Enter value for boost" />
+              <button onClick={handleClick}>Publish</button>
+
         <hr className="my-4" />
         <a href="https://opensea.io/collection/bnet-1" >
         <img src="https://meta.bnetly.com/images/bnetly.png" width="100%"/>
