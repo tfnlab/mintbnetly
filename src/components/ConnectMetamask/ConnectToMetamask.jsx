@@ -5,6 +5,7 @@ import Web3 from 'web3';
 
 //import { Entity, Scene } from "aframe-react";
 import "./styles.css";
+import React, { useState } from 'react';
 
 const items = []
 const itemsonchain = []
