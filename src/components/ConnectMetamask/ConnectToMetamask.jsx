@@ -40,6 +40,7 @@ const ConnectToMetamask = ({ connectToMetamask }) => {
         <input type="text" value={value} onChange={e => setValue(e.target.value)} placeholder="Enter value for boost" />
 
         <br className="my-2" />
+        <br className="my-2" />
         <button onClick={handleClick}>Publish</button>
 
         <hr className="my-4" />
