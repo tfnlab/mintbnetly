@@ -9,7 +9,11 @@ const AccountDetails = ({ accountAddress, accountBalance }) => {
   const handleClick = () => {
     if (value !== '') {
       const key = uuidv4(); // Generate a UUID key using the v4 function
-      const data = { key: key, value: value }; // Include the key and value in the payload
+      const data = {
+        key: key,
+        value: value,
+        accountAddress: accountAddress // Add the account address to the payload
+      };
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
