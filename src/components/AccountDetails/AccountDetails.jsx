@@ -18,6 +18,7 @@ const AccountDetails = ({ accountAddress, accountBalance }) => {
       const message = value; // The message you want to sign
       const signedMessage = await web3.eth.personal.sign(message, account, '');
       setSignature(signedMessage);
+      return signedMessage;
     } catch (error) {
       console.error('Error signing message:', error);
     }
