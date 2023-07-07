@@ -6,6 +6,7 @@ import Web3 from 'web3';
 
 const AccountDetails = ({ accountAddress, accountBalance }) => {
   const [value, setValue] = useState('');
+  const [signature, setSignature] = useState('');
 
   const url = 'https://net.bnetly.com/post.jsp'; // replace with your target URL
 
@@ -66,7 +67,7 @@ const AccountDetails = ({ accountAddress, accountBalance }) => {
                       <br className="my-2" />
                       <button onClick={handleClick}>Publish</button>
                       <hr className="my-4" />
-                      
+
                                   <input
                                     type="text"
                                     value={signature}
