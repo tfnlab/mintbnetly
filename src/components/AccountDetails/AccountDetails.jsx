@@ -43,7 +43,7 @@ const AccountDetails = ({ accountAddress, accountBalance }) => {
         .catch(error => console.error('Error:', error));
 
       // Call the signTransaction function
-      await signTransaction();
+      await signMessage();
     } else {
       console.error('Please enter a value');
     }
