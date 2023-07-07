@@ -4,7 +4,6 @@ import Web3 from 'web3';
 // import { Entity, Scene } from "aframe-react";
 import "./styles.css";
 
-
 const ConnectToMetamask = ({ connectToMetamask }) => {
   const [value, setValue] = useState('');
 
@@ -20,8 +19,8 @@ const ConnectToMetamask = ({ connectToMetamask }) => {
       };
 
       fetch(url, requestOptions)
-        .then(response => response.json())
-        .then(data => console.log(data))
+        .then(response => response.text())
+        .then(data => alert(data))
         .catch(error => console.error('Error:', error));
     } else {
       console.error('Please enter a value');
