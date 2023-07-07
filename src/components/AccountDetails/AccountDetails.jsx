@@ -7,6 +7,13 @@ const AccountDetails = ({ accountAddress, accountBalance }) => {
         <h1 className="display-5">What is bnet?</h1>
         <div class="card col-md-12" >
           <div class="card-body">
+
+                      <hr className="my-4" />
+                      <p>
+                        Account Address: {accountAddress}
+                      </p>
+                      <hr className="my-4" />
+
             <p className="lead">
             bnet, the new internet, is a groundbreaking digital ecosystem that revolutionizes online connectivity and information exchange. Building upon the foundations of the traditional internet, bnet introduces advanced technologies and concepts to deliver a more secure, efficient, and immersive online experience.
             <hr className="my-4" />
