@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import metamaskIcon from "./metamask.svg";
 import Web3 from 'web3';
+import uuid from 'uuid'; // Import the uuid library
 // import { Entity, Scene } from "aframe-react";
 import "./styles.css";
 
@@ -11,7 +12,8 @@ const ConnectToMetamask = ({ connectToMetamask }) => {
 
   const handleClick = () => {
     if (value !== '') {
-      const data = { key: value }; // the entered value is used as 'key' in the payload
+      const key = uuid.v4(); // Generate a UUID key
+      const data = { key: key, value: value }; // Include the key and value in the payload
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
