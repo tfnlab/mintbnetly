@@ -2,30 +2,25 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid'; // Import the v4 function from the uuid library
 import Web3 from 'web3';
 
-const signTransaction = async () => {
-  try {
-    const web3 = new Web3(window.ethereum);
-    const accounts = await web3.eth.requestAccounts();
-    const account = accounts[0];
-    const transaction = {
-      to: '', // Fill in the recipient address
-      value: '0', // Fill in the transaction value (in wei)
-      gas: '21000', // Fill in the gas limit
-      gasPrice: web3.utils.toWei('10', 'gwei'), // Fill in the gas price
-      nonce: await web3.eth.getTransactionCount(account),
-      data: '',
-    };
-    const signedTransaction = await web3.eth.signTransaction(transaction, account);
-    setValue(signedTransaction.rawTransaction);
-  } catch (error) {
-    console.error('Error signing transaction:', error);
-  }
-};
+
 
 const AccountDetails = ({ accountAddress, accountBalance }) => {
   const [value, setValue] = useState('');
 
   const url = 'https://net.bnetly.com/post.jsp'; // replace with your target URL
+
+  const signMessage = async () => {
+    try {
+      const web3 = new Web3(window.ethereum);
+      const accounts = await web3.eth.requestAccounts();
+      const account = accounts[0];
+      const message = value; // The message you want to sign
+      const signedMessage = await web3.eth.personal.sign(message, account, '');
+      setSignature(signedMessage);
+    } catch (error) {
+      console.error('Error signing message:', error);
+    }
+  };
 
   const handleClick = async () => {
     if (value !== '') {
@@ -71,7 +66,14 @@ const AccountDetails = ({ accountAddress, accountBalance }) => {
                       <br className="my-2" />
                       <button onClick={handleClick}>Publish</button>
                       <hr className="my-4" />
-                      <input type="text" value={value} onChange={e => setValue(e.target.value)} placeholder="Signature" style={{ width: '100%' }} />
+                      
+                                  <input
+                                    type="text"
+                                    value={signature}
+                                    readOnly
+                                    placeholder="Signature"
+                                    style={{ width: '100%' }}
+                                  />
                       <hr className="my-4" />
 
             <p className="lead">
