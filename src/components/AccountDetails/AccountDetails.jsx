@@ -67,7 +67,7 @@ const AccountDetails = ({ accountAddress, accountBalance }) => {
                         Account Address: {accountAddress}
                       </p>
                       <hr className="my-4" />
-                      <input type="text" value={value} onChange={e => setValue(e.target.value)} placeholder="Enter value for boost" style={{width: '100%'}} />
+                      <input type="text" value={value} onChange={e => setValue(e.target.value)} placeholder="Enter message here" style={{width: '100%'}} />
 
                       <br className="my-2" />
                       <br className="my-2" />
