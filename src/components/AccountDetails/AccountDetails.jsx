@@ -31,23 +31,28 @@ const AccountDetails = ({ accountAddress, accountBalance }) => {
         value: value,
         accountAddress: accountAddress
       };
+
+      // Call the signTransaction function to generate the signature
+      const signature = await signMessage(data);
+
+      // Attach the signature to the payload
+      data.signature = signature;
+
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       };
 
-      fetch(url, requestOptions)
-        .then(response => response.text())
-        .then(data => alert(data))
-        .catch(error => console.error('Error:', error));
-
-      // Call the signTransaction function
-      await signMessage();
+      // Send the data to the server and get the response
+      const response = await fetch(url, requestOptions);
+      const responseData = await response.text();
+      alert(responseData);
     } else {
       console.error('Please enter a value');
     }
   };
+
 
   return (
     <div>
